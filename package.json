@@ -1,0 +1,45 @@
+{
+  "name": "@ding-live/sdk",
+  "version": "1.1.9",
+  "description": "The official Ding SDK",
+  "keywords": [
+    "ding",
+    "OTP",
+    "sms"
+  ],
+  "engines": {
+    "node": ">=12.*"
+  },
+  "author": "Ding <hello@ding.live> (https://ding.live)",
+  "contributors": [
+    "Aymerick Valette <aymerick@ding.live>"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "rm -rf dist && ncc build src/index.ts -o dist -e superstruct -e date-fns",
+    "lint": "eslint src --ext .ts"
+  },
+  "dependencies": {
+    "date-fns": "^2.29.3",
+    "superstruct": "^1.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ding-live/node-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ding-live/node-sdk/issues"
+  },
+  "homepage": "https://github.com/ding-live/node-sdk#readme",
+  "devDependencies": {
+    "@types/node": "^18.15.12",
+    "@typescript-eslint/eslint-plugin": "^5.59.0",
+    "@typescript-eslint/parser": "^5.59.0",
+    "eslint": "^8.38.0",
+    "typescript": "^5.0.4",
+    "@vercel/ncc": "latest"
+  },
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/types/index.d.ts"
+}
