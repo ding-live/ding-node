@@ -1,16 +1,29 @@
 import { parseJSON } from 'date-fns'
 import { type Infer, StructError, assert, literal, object, string, union } from 'superstruct'
-import { baseUrl } from './config.js'
-import { DingError, UnauthorizedError, Type, handleApiError } from './error.js'
+import { baseUrl } from './config'
+import { DingError, UnauthorizedError, Type, handleApiError } from './error'
 
-export async function authenticate(apiToken: string, customerUuid: string, phoneNumber: string): Promise<Authentication> {
+export enum DeviceType {
+    Ios = 'IOS',
+    Android = 'ANDROID',
+    Web = 'WEB',
+}
+
+export interface Options {
+    ip?: string
+    deviceId?: string
+    deviceType?: DeviceType
+    appVersion?: string
+}
+
+export async function authenticate(apiToken: string, customerUuid: string, phoneNumber: string, options?: Options): Promise<Authentication> {
     const response = await fetch(`${baseUrl}/authentication`, {
         method: 'POST',
         headers: {
             'content-type': 'application/json',
             'x-api-key': apiToken
         },
-        body: JSON.stringify({ phone_number: phoneNumber, customer_uuid: customerUuid })
+        body: JSON.stringify({ phone_number: phoneNumber, customer_uuid: customerUuid, ...(options ? optionToRequest(options) : {}) })
     })
 
     if (response.status === 403) {
@@ -37,6 +50,15 @@ export async function authenticate(apiToken: string, customerUuid: string, phone
         status: apiStatusToStatus(body.status),
         createdAt: parseJSON(body.created_at),
         expiresAt: parseJSON(body.expires_at)
+    }
+}
+
+function optionToRequest(options: Options) {
+    return {
+        ip: options.ip,
+        device_id: options.deviceId,
+        device_type: options.deviceType,
+        app_version: options.appVersion
     }
 }
 
