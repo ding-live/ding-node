@@ -1,6 +1,6 @@
 # Ding Javascript SDK
 
-[![Version](https://img.shields.io/npm/v/@ding-live/sdk.svg)](https://www.npmjs.org/package/@ding-live/sdk.svg)
+[![Version](https://img.shields.io/npm/v/@ding-live/sdk.svg)](https://www.npmjs.org/package/@ding-live/sdk)
 
 The Ding Javascript SDK allows Javascript backends to access the Ding API programmatically.
 
