@@ -30,7 +30,7 @@ const client = new Ding("<CUSTOMER_UUID>", "<SECRET_TOKEN>");
 const auth = await client.authenticate("+12065550100");
 
 // Check the code the user entered
-const check = await client.check(auth.uuid, 1234);
+const check = await client.check(auth.uuid, "1234");
 
 // Retry the auth
 const retry = await client.retry(auth.uuid);
