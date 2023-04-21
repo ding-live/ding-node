@@ -2,6 +2,7 @@ release:
 	TAG=$(git describe --tags "${LATEST_TAG_COMMIT}")
 	git push --tags
 	gh release create "${TAG}"
+	git push
 patch:
 	npm version patch
 	make release
