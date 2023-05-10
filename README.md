@@ -46,6 +46,7 @@ client
     deviceId: "asd8789asf76a98sdf6sdf7s7d8",
     deviceType: DeviceType.Ios,
     appVersion: "1.0",
+    callbackUrl: "<YOUR_CALLBACK_URL>",
   })
   .then(console.debug);
 ```
