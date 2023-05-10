@@ -13,7 +13,8 @@ export interface Options {
     ip?: string
     deviceId?: string
     deviceType?: DeviceType
-    appVersion?: string
+    appVersion?: string,
+    callbackUrl?: string
 }
 
 export async function authenticate(apiToken: string, customerUuid: string, phoneNumber: string, options?: Options): Promise<Authentication> {
@@ -58,7 +59,8 @@ function optionToRequest(options: Options) {
         ip: options.ip,
         device_id: options.deviceId,
         device_type: options.deviceType,
-        app_version: options.appVersion
+        app_version: options.appVersion,
+        callback_url: options.callbackUrl
     }
 }
 
