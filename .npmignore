@@ -7,6 +7,4 @@
 !/LICENSE
 !/README.md
 !/package.json
-!/cjs/**/*
-!/esm/**/*
-!/src/**/*
+!/dist/**/*
