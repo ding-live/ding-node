@@ -24,12 +24,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/ding-live/node-sdk.git"
+    "url": "git+ssh://git@github.com/ding-live/ding-node.git"
   },
   "bugs": {
-    "url": "https://github.com/ding-live/node-sdk/issues"
+    "url": "https://github.com/ding-live/ding-node/issues"
   },
-  "homepage": "https://github.com/ding-live/node-sdk#readme",
+  "homepage": "https://github.com/ding-live/ding-node#readme",
   "devDependencies": {
     "@types/node": "^18.15.12",
     "@typescript-eslint/eslint-plugin": "^5.59.0",
