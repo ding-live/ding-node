@@ -17,22 +17,3 @@ jobs:
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Post slack update
-        id: slack-message
-        uses: slackapi/slack-github-action@v1.23.0
-        with:
-          channel-id: ${{ secrets.SLACK_RELEASE_UPDATE_CHANNEL_ID }}
-          payload: |
-            {
-              "blocks": [
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "New @ding-live/sdk ${{ env.RELEASE_VERSION }} available \n\n<https://www.npmjs.com/package/@ding-live/sdk|View on npm>"
-                  }
-                }
-              ]
-            }
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
