@@ -15,7 +15,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "rm -rf dist && ncc build src/index.ts -o dist -e superstruct -e date-fns",
+    "build": "rm -rf ./dist && tsup src/index.ts --format cjs,esm --shims --dts --clean && fix-tsup-cjs",
     "lint": "eslint src --ext .ts"
   },
   "dependencies": {
@@ -35,11 +35,19 @@
     "@typescript-eslint/eslint-plugin": "^5.59.0",
     "@typescript-eslint/parser": "^5.59.0",
     "eslint": "^8.38.0",
-    "typescript": "^5.0.4",
-    "@vercel/ncc": "latest"
+    "fix-tsup-cjs": "^1.1.1",
+    "tsup": "^6.7.0",
+    "typescript": "^5.0.4"
   },
-  "type": "module",
-  "main": "dist/index.js",
-  "types": "dist/types/index.d.ts",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "main": "./dist/index.js",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "version": "1.2.4"
 }
