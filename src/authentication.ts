@@ -69,9 +69,6 @@ export enum Status {
     Pending = 'pending',
     RateLimited = 'rate_limited',
     SpamDetected = 'spam_detected',
-    Approved = 'approved',
-    Canceled = 'canceled',
-    Expired = 'expired',
 }
 
 export interface Authentication {
@@ -89,9 +86,6 @@ const OkObject = object({
         literal('pending'),
         literal('rate_limited'),
         literal('spam_detected'),
-        literal('approved'),
-        literal('canceled'),
-        literal('expired')
     ]),
     created_at: string(),
     expires_at: string()
@@ -105,12 +99,6 @@ function apiStatusToStatus(status: string): Status {
             return Status.RateLimited
         case 'spam_detected':
             return Status.SpamDetected
-        case 'approved':
-            return Status.Approved
-        case 'canceled':
-            return Status.Canceled
-        case 'expired':
-            return Status.Expired
         default:
             return Status.Unknown
     }
