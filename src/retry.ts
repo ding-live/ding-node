@@ -58,6 +58,7 @@ export enum Status {
     NoAttempt = "no_attempt",
     RateLimited = "rate_limited",
     ExpiredAuth = "expired_auth",
+    AlreadyValidated = "already_validated",
 }
 // ----------------------------------------------------------------------------
 
@@ -72,6 +73,7 @@ const OkObject = object({
         literal("no_attempt"),
         literal("rate_limited"),
         literal("expired_auth"),
+        literal("already_validated"),
     ]),
 })
 

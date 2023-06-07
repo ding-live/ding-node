@@ -1,5 +1,5 @@
 import { parseJSON } from 'date-fns'
-import { type Infer, StructError, assert, literal, object, string, union } from 'superstruct'
+import { type Infer, StructError, assert, literal, object, string, union, optional } from 'superstruct'
 import { baseUrl } from './config'
 import { DingError, UnauthorizedError, Type, handleApiError } from './error'
 
@@ -50,7 +50,7 @@ export async function authenticate(apiToken: string, customerUuid: string, phone
         uuid: body.authentication_uuid,
         status: apiStatusToStatus(body.status),
         createdAt: parseJSON(body.created_at),
-        expiresAt: parseJSON(body.expires_at)
+        expiresAt: body.expires_at ? parseJSON(body.expires_at) : undefined
     }
 }
 
@@ -75,7 +75,7 @@ export interface Authentication {
     uuid: string
     status: Status
     createdAt: Date
-    expiresAt: Date
+    expiresAt?: Date
 }
 
 // ----------------------------------------------------------------------------
@@ -88,7 +88,7 @@ const OkObject = object({
         literal('spam_detected'),
     ]),
     created_at: string(),
-    expires_at: string()
+    expires_at: optional(string()),
 })
 
 function apiStatusToStatus(status: string): Status {
