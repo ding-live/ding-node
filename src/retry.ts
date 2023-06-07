@@ -1,4 +1,4 @@
-import { Infer, StructError, assert, literal, number, object, string, union } from 'superstruct'
+import { Infer, StructError, assert, number, object, string } from 'superstruct'
 import { baseUrl } from './config';
 import { DingError, UnauthorizedError, Type, handleApiError } from './error';
 import { parseJSON } from 'date-fns';
@@ -67,14 +67,7 @@ const OkObject = object({
     created_at: string(),
     next_retry_at: string(),
     remaining_retry: number(),
-    status: union([
-        literal("approved"),
-        literal("denied"),
-        literal("no_attempt"),
-        literal("rate_limited"),
-        literal("expired_auth"),
-        literal("already_validated"),
-    ]),
+    status: string(),
 })
 
 function apiStatusToStatus(status: string): Status {

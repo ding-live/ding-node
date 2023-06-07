@@ -2,10 +2,8 @@ import {
     type Infer,
     StructError,
     assert,
-    literal,
     object,
     string,
-    union
 } from 'superstruct'
 import { baseUrl } from './config'
 import { DingError, UnauthorizedError, Type, handleApiError } from './error'
@@ -73,15 +71,7 @@ export enum Status {
 
 const OkObject = object({
     authentication_uuid: string(),
-    status: union([
-        literal('unknown'),
-        literal('valid'),
-        literal('invalid'),
-        literal('without_attempt'),
-        literal('rate_limited'),
-        literal('already_validated'),
-        literal('expired_auth')
-    ])
+    status: string(),
 })
 
 function apiStatusToStatus(status: string): Status {

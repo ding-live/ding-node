@@ -82,11 +82,7 @@ export interface Authentication {
 
 const OkObject = object({
     authentication_uuid: string(),
-    status: union([
-        literal('pending'),
-        literal('rate_limited'),
-        literal('spam_detected'),
-    ]),
+    status: string(),
     created_at: string(),
     expires_at: optional(string()),
 })
