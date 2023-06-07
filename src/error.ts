@@ -1,4 +1,4 @@
-import { object, string, union, literal, Infer, assert, StructError } from "superstruct";
+import { object, string, Infer, assert, StructError } from "superstruct";
 
 export enum Type {
     InvalidPhoneNumber,
@@ -34,16 +34,7 @@ export class UnauthorizedError extends DingError {
 
 export const ErrObject = object({
     message: string(),
-    code: union([
-        literal("invalid_phone_number"),
-        literal("invalid_line"),
-        literal("unsupported_region"),
-        literal("negative_balance"),
-        literal("account_invalid"),
-        literal("invalid_auth_uuid"),
-        literal("internal_server_error"),
-        literal("bad_request")
-    ]),
+    code: string(),
     doc_url: string(),
 })
 
