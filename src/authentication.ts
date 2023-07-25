@@ -14,7 +14,9 @@ export interface Options {
     deviceId?: string
     deviceType?: DeviceType
     appVersion?: string,
-    callbackUrl?: string
+    callbackUrl?: string,
+    appRealm?: string,
+    isReturningUser: string,
 }
 
 export async function authenticate(apiToken: string, customerUuid: string, phoneNumber: string, options?: Options): Promise<Authentication> {
@@ -24,7 +26,10 @@ export async function authenticate(apiToken: string, customerUuid: string, phone
             'content-type': 'application/json',
             'x-api-key': apiToken
         },
-        body: JSON.stringify({ phone_number: phoneNumber, customer_uuid: customerUuid, ...(options ? optionToRequest(options) : {}) })
+        body: JSON.stringify({
+            phone_number: phoneNumber,
+            customer_uuid: customerUuid, ...(options ? optionToRequest(options) : {})
+        })
     })
 
     if (response.status === 403) {
@@ -60,7 +65,9 @@ function optionToRequest(options: Options) {
         device_id: options.deviceId,
         device_type: options.deviceType,
         app_version: options.appVersion,
-        callback_url: options.callbackUrl
+        callback_url: options.callbackUrl,
+        app_realm: options.appRealm,
+        is_returning_user: options.isReturningUser,
     }
 }
 
