@@ -16,7 +16,7 @@ export interface Options {
     appVersion?: string,
     callbackUrl?: string,
     appRealm?: string,
-    isReturningUser: string,
+    isReturningUser?: string,
 }
 
 export async function authenticate(apiToken: string, customerUuid: string, phoneNumber: string, options?: Options): Promise<Authentication> {
