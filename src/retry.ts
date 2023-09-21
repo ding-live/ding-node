@@ -53,8 +53,8 @@ export interface Retry {
 
 export enum Status {
     Unknown = "unknown",
-    ApprovedRetry = "approved_retry",
-    DeniedRetry = "denied_retry",
+    Approved = "approved",
+    Denied = "denied",
     NoAttempt = "no_attempt",
     RateLimited = "rate_limited",
     ExpiredAuth = "expired_auth",
@@ -73,9 +73,9 @@ const OkObject = object({
 function apiStatusToStatus(status: string): Status {
     switch (status) {
         case "approved":
-            return Status.ApprovedRetry
+            return Status.Approved
         case "denied":
-            return Status.DeniedRetry
+            return Status.Denied
         case "no_attempt":
             return Status.NoAttempt
         case "rate_limited":
