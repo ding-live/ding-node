@@ -1,5 +1,8 @@
 # Ding Javascript SDK
 
+> [!WARNING]
+> This SDK is deprecated in favor of the [Ding Typescript SDK](https://github.com/ding-live/ding-typescript).
+
 [![Version](https://img.shields.io/npm/v/@ding-live/sdk.svg)](https://www.npmjs.org/package/@ding-live/sdk)
 
 The Ding Javascript SDK allows Javascript backends to access the Ding API programmatically.
